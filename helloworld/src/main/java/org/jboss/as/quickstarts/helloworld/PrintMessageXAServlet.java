@@ -16,16 +16,28 @@
  */
 package org.jboss.as.quickstarts.helloworld;
 
-/**
- * A simple CDI service which is able to say hello to someone
- *
- * @author Pete Muir
- *
- */
-public class HelloService {
+import javax.inject.Inject;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-    String createHelloMessage(String name) {
-        return "Hello " + name + "!";
+@WebServlet("/xamessages")
+public class PrintMessageXAServlet extends HttpServlet {
+
+    @Inject
+    Persistence persistence;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.setContentType("text/html");
+        PrintWriter writer = resp.getWriter();
+
+        persistence.xaMessages().stream().forEach(message -> {
+            writer.println("Messages found: ");
+            writer.println("\nMessageNonXA: " + message.getMessage());
+        });
     }
-
 }

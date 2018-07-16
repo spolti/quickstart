@@ -81,7 +81,7 @@
                 serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/org/jboss/as/quickstarts/helloworld/HelloWorldServlet.java,fromLine=50,toLine=51)"/>
         </subitem>
         <subitem
-            label="The doGet() method processes the HttpServletRequest. It sets the HttpServletResponse content type and gets the PrintWriter that can send text to the client. After writing the header, it calls the HelloService createHelloMessage() method to generate the message that displays on the web page. It then writes the footer and closes the PrintWriter."
+            label="The doGet() method processes the HttpServletRequest. It sets the HttpServletResponse content type and gets the PrintWriter that can send text to the client. After writing the header, it calls the HelloService createHelloMessage() method to generate the messageNonXA that displays on the web page. It then writes the footer and closes the PrintWriter."
             skip="true">
             <command
                 required="false"

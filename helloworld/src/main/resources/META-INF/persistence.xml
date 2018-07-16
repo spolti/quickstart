@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
+             xsi:schemaLocation=" http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="rhpam-nonxa" transaction-type="JTA">
+        <jta-data-source>java:/jboss/datasources/rhpam-nonxa</jta-data-source>
+        <class>org.jboss.as.quickstarts.helloworld.MessageNonXA</class>
+        <properties>
+            <!-- Properties for Hibernate -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+            <property name="jboss.as.jpa.providerModule" value="application" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="rhpam-xa" transaction-type="JTA">
+        <jta-data-source>java:/jboss/datasources/rhpam-xa</jta-data-source>
+        <class>org.jboss.as.quickstarts.helloworld.MessageXA</class>
+        <properties>
+            <!-- Properties for Hibernate -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+            <property name="jboss.as.jpa.providerModule" value="application" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+        </properties>
+    </persistence-unit>
+</persistence>
